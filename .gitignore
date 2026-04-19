@@ -1,0 +1,19 @@
+# Personal workspace — never commit
+MASTER_CONTEXT.md
+.env
+
+# Reference images and generated assets — keep local
+references/
+logs/
+
+# Generated skill copies — rebuilt by sync-skill.sh
+.claude/skills/
+.cursor/skills/
+
+# macOS
+.DS_Store
+
+# Node / Python artifacts (if any scripting is added)
+node_modules/
+__pycache__/
+*.pyc
