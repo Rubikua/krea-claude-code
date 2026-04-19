@@ -38,15 +38,21 @@ User wants IMAGE?
 
 User wants VIDEO?
 ├── Animate an existing image (start frame)?
-│   ├── Character with natural motion?     → model: kling  (image_url)
-│   ├── Best quality + audio?             → model: veo-3  (image_url)
+│   ├── Character with natural motion?     → model: kling  → [kling.md](prompting/prompt-library/kling.md)
+│   ├── Best quality + audio?             → model: veo-3  → [veo-3.md](prompting/prompt-library/veo-3.md)
 │   └── General / fast?                   → model: hailuo (image_url)
 ├── Cinematic camera move?                → model: runway
-├── Longer scene (>10s)?                  → model: sora
+├── Longer scene (>10s)?                  → model: sora   → [sora.md](prompting/prompt-library/sora.md)
 ├── Artistic / anime?                     → model: wan
 ├── Photorealistic smooth motion?         → model: luma
 ├── Fast UGC / reactive clip?            → model: pika
 └── ByteDance quality (Seedance)?        → model: seedance
+    ├── Read [seedance.md](prompting/prompt-library/seedance.md) first, then pick style:
+    ├── UGC selfie / testimonial          → [seedance-ugc.md](prompting/prompt-library/seedance-ugc.md)
+    ├── Dark void product reveal          → [seedance-premium-reveal.md](prompting/prompt-library/seedance-premium-reveal.md)
+    ├── Elemental product hero (splash)   → [seedance-product-hero.md](prompting/prompt-library/seedance-product-hero.md)
+    ├── Studio lookbook with voiceover    → [seedance-studio-lookbook.md](prompting/prompt-library/seedance-studio-lookbook.md)
+    └── Feature walkthrough / demo        → [seedance-feature-walkthrough.md](prompting/prompt-library/seedance-feature-walkthrough.md)
 
 User wants CONSISTENT CHARACTER ACROSS SHOTS?
 └── Two-step flow: still → approve → video (see Character workflow below)
@@ -77,10 +83,16 @@ User needs to UPLOAD a local/external image?
 
 ```
 1. Determine best model from decision tree above.
-2. Read prompting/guide.md + prompting/prompt-library/video.md.
-3. If user provides an image: ensure it's a hosted URL (upload via upload_asset if needed).
+2. Read prompting/guide.md + the model-specific prompt library file:
+   - kling:    prompting/prompt-library/kling.md
+   - veo-3:    prompting/prompt-library/veo-3.md
+   - sora:     prompting/prompt-library/sora.md
+   - seedance: prompting/prompt-library/seedance.md → then pick sub-style file
+   - others:   prompting/prompt-library/video.md (generic guidelines)
+3. If user provides an image: ensure it's a hosted URL.
+   (upload_asset is currently broken — use list_assets CDN URLs instead)
 4. Call generate_video(prompt, model, aspect_ratio, duration, image_url?).
-5. Poll get_job(job_id) until status == "completed" (videos take 1–5 min).
+5. Poll get_job(job_id) until status == "completed" (videos take 1–15 min).
 6. Return result URL to user.
 ```
 

@@ -2,13 +2,7 @@
 MASTER_CONTEXT.md
 .env
 
-# Reference images and generated assets — keep local, but track folder structure
-references/influencers/*
-!references/influencers/.gitkeep
-references/products/*
-!references/products/.gitkeep
-references/aesthetics/*
-!references/aesthetics/.gitkeep
+# Logs — keep structure, ignore contents
 logs/*
 !logs/.gitkeep
 

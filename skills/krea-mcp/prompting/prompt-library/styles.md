@@ -1,10 +1,16 @@
 # Styles / LoRAs — search guide
 
-Krea's style system lets you apply trained LoRAs to any image generation. This file helps you find and use them effectively.
+> **Status (tested 2026-04-19):** `search_styles` returns 404 on all queries — the endpoint is currently non-functional. Do not attempt to call it. Instead, describe the desired aesthetic directly in the prompt (see [guide.md](../guide.md)) or use a style_id you've already saved in `MASTER_CONTEXT.md`.
+>
+> `get_style(style_id)` still works if you have a known ID. If you find a working style_id through another path, save it to `MASTER_CONTEXT.md`.
 
 ---
 
-## How to use styles
+Krea's style system lets you apply trained LoRAs to any image generation. This file documents the intended workflow and query patterns for when the endpoint is restored.
+
+---
+
+## How to use styles (when search_styles is working)
 
 ```
 1. Call search_styles("your aesthetic description") — be specific.
