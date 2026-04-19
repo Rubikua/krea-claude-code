@@ -2,9 +2,15 @@
 MASTER_CONTEXT.md
 .env
 
-# Reference images and generated assets — keep local
-references/
-logs/
+# Reference images and generated assets — keep local, but track folder structure
+references/influencers/*
+!references/influencers/.gitkeep
+references/products/*
+!references/products/.gitkeep
+references/aesthetics/*
+!references/aesthetics/.gitkeep
+logs/*
+!logs/.gitkeep
 
 # Generated skill copies — rebuilt by sync-skill.sh
 .claude/skills/
