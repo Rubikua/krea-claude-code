@@ -121,6 +121,7 @@ Agent uses `search_styles` to find matching LoRAs, picks the best `style_id`, an
 |-------|---------|---------|
 | `hailuo` | General UGC, fast (default) | 5s |
 | `kling` | High-quality character animation | 5–10s |
+| `seedance` | ByteDance — high quality UGC / product | 5s |
 | `runway` | Cinematic, creative motion | 4–10s |
 | `pika` | Fast clips, motion FX | 3–5s |
 | `veo-3` | Best quality, audio-aware | 8s |
@@ -140,13 +141,7 @@ Agent uses `search_styles` to find matching LoRAs, picks the best `style_id`, an
 
 ## Styles / LoRAs
 
-Krea supports styles (LoRAs) you can search and apply to any image generation:
-
-```
-> "Search for a vintage film grain style and apply it to this product shot"
-```
-
-The agent calls `search_styles`, picks the best match, then passes `style_id` into `generate_image`. Save useful `style_id` values to `MASTER_CONTEXT.md` so you never search again.
+> **Note (tested 2026-04-19):** `search_styles` and `upload_asset` are currently non-functional (404/500 errors from Krea's API). The agent will inform you if you request these features and suggest workarounds (descriptive prompting instead of LoRAs; `list_assets` to reuse previously generated images).
 
 ---
 

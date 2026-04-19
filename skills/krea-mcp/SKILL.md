@@ -1,7 +1,7 @@
 ---
 name: krea-mcp
 description: >-
-  Creates AI images and videos via the Krea MCP tools (mcp__krea-mcp__*). Supports Flux, Flux Pro, Ideogram, Imagen 4, Krea-1, ChatGPT Image, Nano Banana, Seedream (images) and Hailuo, Kling, Runway, Pika, Veo 3, Sora, Luma, Wan (video). Handles style/LoRA search, asset upload, job polling, and UGC workflows. Use when the user mentions Krea, AI image generation, AI video generation, UGC content, influencer creation, or marketing creative.
+  Creates AI images and videos via the Krea MCP tools (mcp__krea-mcp__*). Supports Flux, Flux Pro, Ideogram, Imagen 4, Krea-1, ChatGPT Image, Nano Banana, Seedream (images) and Hailuo, Kling, Runway, Pika, Veo 3, Sora, Luma, Wan, Seedance (video). Handles asset listing, job polling, and UGC workflows. Use when the user mentions Krea, AI image generation, AI video generation, UGC content, influencer creation, or marketing creative.
 ---
 
 # Krea MCP skill
@@ -45,7 +45,8 @@ User wants VIDEO?
 ├── Longer scene (>10s)?                  → model: sora
 ├── Artistic / anime?                     → model: wan
 ├── Photorealistic smooth motion?         → model: luma
-└── Fast UGC / reactive clip?            → model: pika
+├── Fast UGC / reactive clip?            → model: pika
+└── ByteDance quality (Seedance)?        → model: seedance
 
 User wants CONSISTENT CHARACTER ACROSS SHOTS?
 └── Two-step flow: still → approve → video (see Character workflow below)
@@ -101,23 +102,11 @@ NEVER skip the approval step. Video generation is slow and costly.
 
 ### 4. Style / LoRA workflow
 
-```
-1. Call search_styles(query) — e.g. search_styles("vintage film grain").
-2. Review results. If uncertain, call get_style(style_id) for full details and previews.
-3. Apply via style_id in generate_image.
-4. Save the style_id + name to MASTER_CONTEXT.md under "Saved style IDs".
-```
+> **Status (tested 2026-04-19):** `search_styles` returns 404 on all queries — the endpoint appears non-functional. Do not attempt to use it. If the user requests a style, inform them the feature is currently unavailable via MCP and suggest using a strong descriptive prompt instead (e.g. describe the aesthetic in the prompt text itself).
 
 ### 5. Asset upload
 
-```
-Use upload_asset(url) when:
-  - The user has a local image path (convert to a hosted URL first, or ask user to upload somewhere accessible).
-  - You need to reuse an output image as input in a subsequent generation.
-  - A model requires a Krea-hosted URL rather than an external URL.
-
-After upload: use the returned asset URL as image_url in generate_image / generate_video.
-```
+> **Status (tested 2026-04-19):** `upload_asset` returns 500 Internal Error. Do not attempt to use it. Use `list_assets` to browse previously generated images — their `image_url` values are already hosted on Krea's CDN and can be passed directly into `image_url` in subsequent generations.
 
 ---
 

@@ -11,6 +11,7 @@ Use these templates for `generate_video`. Always include human motion cues for p
 | Character animation from still | `kling` | YES (start frame) |
 | Highest quality + audio | `veo-3` | YES or NO |
 | Fast general UGC | `hailuo` | YES or NO |
+| ByteDance quality UGC / product | `seedance` | YES or NO |
 | Cinematic camera move | `runway` | YES or NO |
 | Long scene / multi-shot | `sora` | optional |
 | Smooth photorealistic | `luma` | YES or NO |
@@ -84,6 +85,27 @@ slight camera movement as if handheld observer,
 golden hour tones, lifestyle editorial feel,
 no subtitles, no text
 ```
+
+---
+
+## Seedance — UGC or product video
+
+**Model:** `seedance` | **image_url:** optional start frame
+
+```
+[Character or product description],
+[action: holding product / talking to camera / unboxing],
+[setting: bedroom / bathroom / kitchen counter],
+natural authentic movement, creator-style delivery,
+breaking eye contact briefly, slight head tilt, natural blink cadence,
+shot on iPhone, handheld, slight motion blur, film grain,
+warm lifestyle lighting,
+no subtitles, no captions, no text overlays
+```
+
+**Aspect ratio:** `9:16` for Reels | **Duration:** 5s
+
+> Note: Seedance returns `type: "videoV2"` in job responses — this is normal. Poll with `get_job` as usual.
 
 ---
 

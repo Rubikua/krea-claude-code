@@ -66,6 +66,7 @@ Generate a video. Returns `job_id` — poll with `get_job`.
 | `sora` | Long scenes, complex briefs | ~20s |
 | `luma` | Photorealistic smooth motion | 5s |
 | `wan` | Artistic, anime-style | 5s |
+| `seedance` | ByteDance — high quality, returns as `videoV2` type | 5s |
 
 ---
 
@@ -94,6 +95,8 @@ Poll every 10–15s for images; every 20–30s for videos. Status flow: `schedul
 
 ## search_styles
 
+> **Status (tested 2026-04-19): NON-FUNCTIONAL — returns 404 on all queries. Do not use.**
+
 Search for LoRA styles to apply to image generations.
 
 | Param | Type | Default | Notes |
@@ -101,11 +104,11 @@ Search for LoRA styles to apply to image generations.
 | `query` * | string | — | Search term (e.g. "vintage film", "watercolor") |
 | `limit` | number | 10 | Max results (1–1000) |
 
-Returns a list of styles with `id`, `name`, `description`, and preview info.
-
 ---
 
 ## get_style
+
+> **Status: depends on `search_styles` — avoid until that endpoint is fixed.**
 
 Get full details of a specific style.
 
@@ -117,14 +120,15 @@ Get full details of a specific style.
 
 ## upload_asset
 
+> **Status (tested 2026-04-19): NON-FUNCTIONAL — returns 500 Internal Error. Do not use.**
+> **Workaround:** Use `list_assets` to find previously generated image URLs — they are already hosted on Krea's CDN and can be passed directly as `image_url`.
+
 Upload an image or video to Krea for use as a reference in generations.
 
 | Param | Type | Notes |
 |-------|------|-------|
 | `url` * | string | Publicly accessible URL of the image or video |
 | `name` | string | Optional display name |
-
-Returns asset details including a Krea-hosted URL to use in `image_url`.
 
 ---
 
